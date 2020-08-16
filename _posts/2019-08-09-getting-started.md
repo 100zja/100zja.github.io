@@ -1,9 +1,9 @@
 ---
-title: 
-author: Cotes Chung
-date: 2019-08-09 20:55:00 +0800
-categories: [Blogging, Tutorial]
-tags: [getting started]
+title: Buffer OverFlow
+author: 100zja
+date: 2020-08-16
+categories: [study]
+tags: [bof]
 pin: true
 ---
 
