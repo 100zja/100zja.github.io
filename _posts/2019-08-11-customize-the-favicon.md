@@ -1,7 +1,7 @@
 ---
 title: FTZ
 author: 100zja
-date: 2020-18-17
+date: 2020-8-17
 categories: [study}
 tags: [ftz]
 toc: false
