@@ -1,10 +1,10 @@
 ---
 title: FTZ
 author: 100zja
-date: 2020-8-17
+date: 2020-08-17
 categories: [study}
 tags: [ftz]
-toc: false
+toc: ture
 ---
 
 In [**Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/), the image files of [Favicons](https://www.favicon-generator.org/about/) are placed in `assets/img/favicons/`. You may need to replace them with your own. So let's see how to customize these Favicons.
