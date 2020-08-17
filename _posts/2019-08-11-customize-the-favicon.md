@@ -1,9 +1,9 @@
 ---
-title: Customize the Favicon
-author: Cotes Chung
-date: 2019-08-11 00:34:00 +0800
-categories: [}
-tags: [favicon]
+title: FTZ
+author: 100zja
+date: 2020-18-17
+categories: [study}
+tags: [ftz]
 toc: false
 ---
 
