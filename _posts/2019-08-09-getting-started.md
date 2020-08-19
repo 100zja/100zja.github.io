@@ -27,14 +27,14 @@ pin: true
 ![memory structure](/image/memory_structure.jpg)
 
 * 하나의 세그먼트는 code segment, data segment, stack segment라고 함, 시스템에는 최대 16383개의 segment가 생성될 수 있다.   
-* code segment : 시스템들이 알아들을 수 있는 명령어 - instruction이 들어있음, 기계어 코드로써 컴파일러가 만든 코드, 명령을 수행하면서 많은 분기 과정, 점프, 시스템 호출 등 수행  
+* **code segment** : 시스템들이 알아들을 수 있는 명령어 - instruction이 들어있음, 기계어 코드로써 컴파일러가 만든 코드, 명령을 수행하면서 많은 분기 과정, 점프, 시스템 호출 등 수행  
   - 분기 과정, 점프 : 메모리 상의 특정 위치에 있는 명령을 지정해 주어야 함   
   - 세그먼트 : 현재 메모리상의 어느 위치에 저장될지 컴파일 과정에서 알 수 없음 -> 정확한 주소 지정 불가   
 =====> logical address 사용 - 실제 메모리 상의 주소(physical address)와 매핑 됨  
 * segment - segment selector에 의해서 자신의 시작 위치(offset)을 찾을 수 있음, 자신의 시작 위치로부터의 위치에 있는 명령 수행 여부 결정  
-* data segment : 프로그램 실행 시 사용되는 데이터 들어감 ==> 전역 변수   
+* **data segment** : 프로그램 실행 시 사용되는 데이터 들어감 ==> 전역 변수   
   - 프로그램 내애서 전역 변수 선언 -> data segment에 변수 자리잡음 -> 다시 네 개의 data segment 로 나뉨 : 현재 모듈의 data segment, 상위 레벨로부터의 데이터 모듈, 동적 생성 데이터, 다른 프로그램과 공유하는 공유 데이터로 나뉨  
-* stack segment : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역, 
+* **stack segment** : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역, 
 buffer - stack segment에 있음
 ## Register structure
 
