@@ -105,31 +105,40 @@ buffer - stack segment에 있음
 * 기계어(컴퓨터가 읽을 수 있는 2진수 언어)를 사람이 보기 쉽게 문자를 기호화 하여 나타낸 것   
   - 매우 쉽고 간결함   
 ![Assembly](.\image\어셈블리어.png)
-● push : push %eax - eax 값을 스택에 저장
-● pop : pop %eax - 스택 가장 상위의 값을 꺼내서 eax에 저장
-● mov : mov %eax, %ebx - 메모리나 레지스터의 값을 옮길 때 사용
-● lea : leal(%esi), %ecx - %esi의 주소값을 %ecx에 옮긴다
-● inc : inc %eax - %eax의 값을 1 증가시킴
-● dec : dec %eax - %eax의 값을 1 감소시킴
-● add : add %eax, %ebx - 레지스터나 메모리의 값을 덧셈할 때 쓰임
-● sub : sub $0x8, %esp - 레지스터나 메모리의 값을 뺄셈할 때 쓰임
-● call : call proc - 프로시져를 호출함
-● ret : ret - 호출했던 바로 다음 지점으로 이동
-● cmp : cmp %eax, %ebx - 레지스터와 레지스터값을 비교
-● jmp : jmp proc - 특정한 곳으로 분기
-● int : int $0x80 - OS에 할당된 인터럽트 영역을 system call
-● nop : nop - 아무 동작도 하지 않음
+* **push** : push %eax - eax 값을 스택에 저장  
+* **pop** : pop %eax - 스택 가장 상위의 값을 꺼내서 eax에 저장  
+* **mov** : mov %eax, %ebx - 메모리나 레지스터의 값을 옮길 때 사용  
+* **lea** : leal(%esi), %ecx - %esi의 주소값을 %ecx에 옮긴다  
+* **inc** : inc %eax - %eax의 값을 1 증가시킴  
+* **dec** : dec %eax - %eax의 값을 1 감소시킴  
+* **add** : add %eax, %ebx - 레지스터나 메모리의 값을 덧셈할 때 쓰임 
+* **sub** : sub $0x8, %esp - 레지스터나 메모리의 값을 뺄셈할 때 쓰임  
+* **call** : call proc - 프로시져를 호출함  
+* **ret** : ret - 호출했던 바로 다음 지점으로 이동  
+* **cmp** : cmp %eax, %ebx - 레지스터와 레지스터값을 비교  
+* **jmp** : jmp proc - 특정한 곳으로 분기  
+* **int** : int $0x80 - OS에 할당된 인터럽트 영역을 system call  
+* **nop** : nop - 아무 동작도 하지 않음  
 
+- 데이터 이동 : mov, lea  
+- 논리, 연산 : add, sub, inc, dec  
+- 흐름 제어 : jmp, cmp  
+- 프로시져 : call, ret  
+- 스택 조작 :　push pop  
+- 인터럽트 : int  
 
+프로시져 : 해결해야할 복잡한 문제들을 작은 부분들로 쪼개어 하나하나 풀어가는 것==> 프로그래밍이 한결 쉬워짐  
 ## Prologue & Epilogue
 
-For security reasons, GitHub Pages build runs on `safe` mode, which restricts us from using tool scripts to generate additional page files. Therefore, we can use GitHub Actions to build the site, store the built site files on a new branch, and use that branch as the source of the Pages service.
-
-1. Push any commit to `origin/master` to trigger the GitHub Actions workflow. Once the build is complete, a new remote branch called `gh-pages` will appear, which is used to store the built site files.
-
-2. Unless you prefer to project sites, rename your repository to `<username>.github.io` on GitHub.
-
-3. Choose branch `gh-pages` as the [publishing source](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) for your GitHub Pages site.
-
-4. Visit your website at the address indicated by GitHub.
-
+* **프롤로그** : push %ebp
+	      mov %ebp, %esp
+* **에필로그** : leave, ret
+  - leave : 
+	  mov %ebp, %esp 
+	  pop %ebp 
+	  ===> mov %ebp, %esp - esp레지스터에 ebp주소 넣기
+		pop %ebp - ebp를 스택 프레임에서 꺼내기
+  - ret :  pop %eip
+	  jmp %eip
+	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄
+		jmp %eip - 다음 명령의 주소로 점프 
