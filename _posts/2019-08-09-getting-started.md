@@ -81,30 +81,45 @@ buffer - stack segment에 있음
 
 ## System Flags
 
-Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
-* `url`
-* `avatar`
-* `timezone`
-* `theme_mode`
+![system flags](.\image\system_flags.png)
+  - IF : interrupt enable flag, 프로세서에게 mask한 interrupt에 응답할 수 있게 할 시 1
+  - TF : Trap flag, 디버깅을 할 때 single-step을 가능하게 할 시 1
+  - IOPL : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근위해서 I/O privilege level 보다 작거나 같아야 함
+  - NT : Nested task interrupt의 chain 제어, 1->실행 task와 현재 task가 연결되어 있음 나타냄
+  - RF : resume flag, exception debug 하기 위해 프로세서의 응답 제어
+  - VM : virtual-8086 mode flag, virtual-8086 모드 사용하려면 1을 줌
+  - AC : alignment check flag, 이 비트와 CR0 레지스터들의 AM 비트가 set 돼 있을시 메모리 레퍼런스의 alignment checking 가능
+  - VIF : virtual interrupt flag, IF flag의 가상 이미지, VIP flag와 결합시켜 사용
+  - VIP : virtual interrupt pending flag, 인터럽트가 pending 되었음을 가리킴
+  - ID : identification flag, CPUID instruction을 지원하는 CPU인지를 나타냄
 
 
 ## Instruction Pointer
 
-You may want to preview the site contents before publishing, so just run it by:
-
-```terminal
-$ bash tools/run.sh
-```
-
-Then open a browser and visit to <http://localhost:4000>.
-
-Few days later, you may find that the file changes does not refresh in real time by using `run.sh`. Don't worry, the advanced option `-r` (or `--realtime`) will solve this problem, but it requires [**fswatch**](http://emcrisostomo.github.io/fswatch/) to be installed on your machine.
+: 다음 실행할 명령어가 있는 현재 code segment의 offset 값을 가짐. 하나의 명령어 범위에서 선형 명령 집합의 다음 위치 가리킬 수 있음  
+  - JMP, Jcc, CALL, RET, IRET instruction이 있는 주소값 가짐   
+* **EIP register** - 소프트웨어에 의해 바로 엑세스 할 수 없음, 특정 명령어(JMP, Jcc, CALL, RET)을 사용하거나 인터럽트, 예외를 발생 시켜야 함, 실행할 다음 명령어 주소 포함, 명령어 포인터 레지스터   
 
 ## Assembly Language
 
-Before the deployment begins, checkout the file `_config.yml` and make sure the `url` is configured correctly. Furthermore, if you prefer the [_project site_](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base url on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starting with a slash. For example, `/project`.
+* 기계어(컴퓨터가 읽을 수 있는 2진수 언어)를 사람이 보기 쉽게 문자를 기호화 하여 나타낸 것   
+  - 매우 쉽고 간결함   
+![Assembly](.\image\어셈블리어.png)
+● push : push %eax - eax 값을 스택에 저장
+● pop : pop %eax - 스택 가장 상위의 값을 꺼내서 eax에 저장
+● mov : mov %eax, %ebx - 메모리나 레지스터의 값을 옮길 때 사용
+● lea : leal(%esi), %ecx - %esi의 주소값을 %ecx에 옮긴다
+● inc : inc %eax - %eax의 값을 1 증가시킴
+● dec : dec %eax - %eax의 값을 1 감소시킴
+● add : add %eax, %ebx - 레지스터나 메모리의 값을 덧셈할 때 쓰임
+● sub : sub $0x8, %esp - 레지스터나 메모리의 값을 뺄셈할 때 쓰임
+● call : call proc - 프로시져를 호출함
+● ret : ret - 호출했던 바로 다음 지점으로 이동
+● cmp : cmp %eax, %ebx - 레지스터와 레지스터값을 비교
+● jmp : jmp proc - 특정한 곳으로 분기
+● int : int $0x80 - OS에 할당된 인터럽트 영역을 system call
+● nop : nop - 아무 동작도 하지 않음
 
-Assuming you have already gone through the [initialization](#initialization), you can now choose any of the following methods to deploy your website.
 
 ## Prologue & Epilogue
 
