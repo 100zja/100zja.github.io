@@ -34,7 +34,7 @@ pin: true
 * segment - segment selector에 의해서 자신의 시작 위치(offset)을 찾을 수 있음, 자신의 시작 위치로부터의 위치에 있는 명령 수행 여부 결정  
 * **data segment** : 프로그램 실행 시 사용되는 데이터 들어감 ==> 전역 변수   
   - 프로그램 내애서 전역 변수 선언 -> data segment에 변수 자리잡음 -> 다시 네 개의 data segment 로 나뉨 : 현재 모듈의 data segment, 상위 레벨로부터의 데이터 모듈, 동적 생성 데이터, 다른 프로그램과 공유하는 공유 데이터로 나뉨  
-* **stack segment** : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역, 
+* **stack segment** : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역,   
 buffer - stack segment에 있음
 ## Register structure
 
