@@ -19,7 +19,7 @@ pin: true
 * BOF 공격에 취약한 함수 : strcpy, gets, scanf, strcat, sprintf 등  
 ---> 처리하는 문자열의 크기를 지정하지 않음  
 
-## Memory structure
+## **Memory structure**
 
 메모리는 여러 개의 프로세스가 저장되어 병렬적으로 작업을 수행한다.   
 운영 체재 - 하나의 프로세스 실행 시 segment 라는 단위로 묶는다.   
@@ -43,7 +43,7 @@ buffer - stack segment에 있음
   - 그래도 이 때까지의 데이터 개수 알 수 있음    
   - 중간의 데이터는 절대 알 수 없음, 알고 싶다면 제일 위에 있을거라 추정되는 그 데이터의 자료까지 모조리 꺼내봐야 함    
   - 제일 처음 들어간 자료는 모든 자료를 꺼내기 전까지 알 수 없고, 제일 마지막에 들어간 자료는 바로 알 수 있음     
-## Register structure
+## **Register structure**
 * **레지스터** : 프로세서에 위치한 고속 메모리, 극히 소량의 데이터나 처리 중인 중간 결과와도 같은 프로세서 -> 바로 사용할 수 있는 데이터를 담고 있는 영역   
   - cpu안에 존재, 연산 수행, 컴퓨터 안에서 가장 빠른 연산속도 가짐->자잘한 연산 도맡아서 함   
   - 용량이 매우 작음, 레지스터에 프로그램 직접 받을 수 없음   
@@ -69,7 +69,7 @@ buffer - stack segment에 있음
 
 
 
-## Status Flags
+## **Status Flags**
 
   - **CF** : carry flag, 연산을 수행하면서 carry or borrow 발생 시 1이 됨, carry, borrow는 덧셈 연산 시 bit bound를 넘어가거나 뺄셈을 하는 데 빌려오는 경우 말함  
   - **PF** : Parity flag, 연산 결과 최하위 바이트의 값이 짝수일 경우에 1이 됨, 패리티 체크를 하는 데에 사용   
@@ -79,7 +79,7 @@ buffer - stack segment에 있음
   - **OF** : overflow flag, 정수형 결과값이 너무 큰 양수이거나 너무 작은 음수일 경우 피연산자 데이터 타입에 모두 들어가지 않을 경우 1이 됨   
   - **DF** : Direction flag, 문자열 처리에 있어서 1일 경우 -> 문자열 처리 instruction 자동 감소(문자열 처리 high address -> low address), 0일 경우 자동 증가    
 
-## System Flags
+## **System Flags**
 
 ![system flags](image\system_flags.png)
   - **IF** : interrupt enable flag, 프로세서에게 mask한 interrupt에 응답할 수 있게 할 시 1
@@ -94,13 +94,13 @@ buffer - stack segment에 있음
   - **ID** : identification flag, CPUID instruction을 지원하는 CPU인지를 나타냄
 
 
-## Instruction Pointer
+## **Instruction Pointer**
 
 : 다음 실행할 명령어가 있는 현재 code segment의 offset 값을 가짐. 하나의 명령어 범위에서 선형 명령 집합의 다음 위치 가리킬 수 있음  
   - JMP, Jcc, CALL, RET, IRET instruction이 있는 주소값 가짐   
 * **EIP register** - 소프트웨어에 의해 바로 엑세스 할 수 없음, 특정 명령어(JMP, Jcc, CALL, RET)을 사용하거나 인터럽트, 예외를 발생 시켜야 함, 실행할 다음 명령어 주소 포함, 명령어 포인터 레지스터   
 
-## Assembly Language
+## **Assembly Language**
 
 * 기계어(컴퓨터가 읽을 수 있는 2진수 언어)를 사람이 보기 쉽게 문자를 기호화 하여 나타낸 것   
   - 매우 쉽고 간결함   
@@ -128,7 +128,7 @@ buffer - stack segment에 있음
 - 인터럽트 : int  
 
 프로시져 : 해결해야할 복잡한 문제들을 작은 부분들로 쪼개어 하나하나 풀어가는 것==> 프로그래밍이 한결 쉬워짐  
-## Prologue & Epilogue
+## **Prologue & Epilogue**
 
 * **프롤로그** : 함수 내에서 사용할 스택 프레임 설정   
         push %ebp  
