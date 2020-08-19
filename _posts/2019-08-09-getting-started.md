@@ -8,7 +8,7 @@ pin: true
 ---
 
 
-## What is BOF?
+# What is BOF?
 
 **Overflow** : '넘쳐 흐르다.'의 의미   
 * 버퍼 - 지정된 크기의 메모리 공간  
