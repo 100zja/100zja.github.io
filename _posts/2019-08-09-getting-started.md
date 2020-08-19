@@ -24,7 +24,7 @@ pin: true
 메모리는 여러 개의 프로세스가 저장되어 병렬적으로 작업을 수행한다.   
 운영 체재 - 하나의 프로세스 실행 시 segment 라는 단위로 묶는다.   
 
-![memory structure](/image/memory_structure.jpg)
+![memory structure](./image/메모리 구조.jpg)
 
 * 하나의 세그먼트는 code segment, data segment, stack segment라고 함, 시스템에는 최대 16383개의 segment가 생성될 수 있다.   
 * **code segment** : 시스템들이 알아들을 수 있는 명령어 - instruction이 들어있음, 기계어 코드로써 컴파일러가 만든 코드, 명령을 수행하면서 많은 분기 과정, 점프, 시스템 호출 등 수행  
