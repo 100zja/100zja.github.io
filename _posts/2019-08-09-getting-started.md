@@ -131,18 +131,18 @@ buffer - stack segment에 있음
 ## Prologue & Epilogue
 
 * **프롤로그** : 함수 내에서 사용할 스택 프레임 설정   
-        push %ebp
-	      mov %ebp, %esp
+        push %ebp  
+	      mov %ebp, %esp  
 ====> ebp에 스택을 저장하고, esp를 ebp에 저장
 * **에필로그** : 수행을 마치고 처음 호출한 지점으로 돌아가기 위해 스택 복원  
 leave, ret
-  - leave : 
-	  mov %ebp, %esp 
-	  pop %ebp 
-	  ===> mov %ebp, %esp - esp레지스터에 ebp주소 넣기
-		pop %ebp - ebp를 스택 프레임에서 꺼내기
-  - ret :  pop %eip
-	  jmp %eip
-	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄
+  - leave :   
+	  mov %ebp, %esp   
+	  pop %ebp  
+	  ===> mov %ebp, %esp - esp레지스터에 ebp주소 넣기  
+		pop %ebp - ebp를 스택 프레임에서 꺼내기  
+  - ret :  pop %eip   
+	  jmp %eip   
+	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄  
 		jmp %eip - 다음 명령의 주소로 점프  
 ===> 현재 esp를 ebp로 복구해주고 ret을 통해 다음 가야할 address로 점프  
