@@ -141,4 +141,4 @@ buffer - stack segment에 있음
   - ret :  pop %eip
 	  jmp %eip
 	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄
-		jmp %eip - 다음 명령의 주소로 점프 
+		jmp %eip - 다음 명령의 주소로 점프  
