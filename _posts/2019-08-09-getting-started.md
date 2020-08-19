@@ -107,35 +107,3 @@ For security reasons, GitHub Pages build runs on `safe` mode, which restricts us
 
 4. Visit your website at the address indicated by GitHub.
 
-#### Deploy on Other Platforms
-
-On platforms other than GitHub, e.g. GitLab, we cannot enjoy the convenience of **GitHub Actions**. However, we have a tool to make up for this shortcoming.
-
-Commit the changes of your repository first, then run the publish script:
-
-```console
-$ bash tools/publish.sh
-```
-
-> Please note that the *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
-
-It will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts and submit a commit, then push to `origin/master`. Its output is similar to the following log:
-
-```terminal
-[INFO] Success to update lastmod for 4 post(s).
-[INFO] Succeed! 3 category-pages created.
-[INFO] Succeed! 4 tag-pages created.
-[INFO] Published successfully!
-```
-
-Lastly, enable the pages service according to the instructions of the platform you choose.
-
-#### Deploy on Private Server
-
-In the root of the source project, build your site by:
-
-```console
-$ bash tools/build.sh -d /path/to/site/
-```
-
-The generated site files will be placed in the root of `/path/to/site/`. Now you should upload those files to your web server, such as Nginx.
