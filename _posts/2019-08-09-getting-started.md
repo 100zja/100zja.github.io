@@ -130,9 +130,12 @@ buffer - stack segment에 있음
 프로시져 : 해결해야할 복잡한 문제들을 작은 부분들로 쪼개어 하나하나 풀어가는 것==> 프로그래밍이 한결 쉬워짐  
 ## Prologue & Epilogue
 
-* **프롤로그** : push %ebp
+* **프롤로그** : 함수 내에서 사용할 스택 프레임 설정   
+        push %ebp
 	      mov %ebp, %esp
-* **에필로그** : leave, ret
+====> ebp에 스택을 저장하고, esp를 ebp에 저장
+* **에필로그** : 수행을 마치고 처음 호출한 지점으로 돌아가기 위해 스택 복원  
+leave, ret
   - leave : 
 	  mov %ebp, %esp 
 	  pop %ebp 
@@ -142,3 +145,4 @@ buffer - stack segment에 있음
 	  jmp %eip
 	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄
 		jmp %eip - 다음 명령의 주소로 점프  
+===> 현재 esp를 ebp로 복구해주고 ret을 통해 다음 가야할 address로 점프  
