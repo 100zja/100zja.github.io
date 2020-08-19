@@ -71,27 +71,27 @@ buffer - stack segment에 있음
 
 ## Status Flags
 
-  - CF : carry flag, 연산을 수행하면서 carry or borrow 발생 시 1이 됨, carry, borrow는 덧셈 연산 시 bit bound를 넘어가거나 뺄셈을 하는 데 빌려오는 경우 말함  
-  - PF : Parity flag, 연산 결과 최하위 바이트의 값이 짝수일 경우에 1이 됨, 패리티 체크를 하는 데에 사용   
-  - AF : adjust flag, 연산 결과 carry or borrow가 3bit 이상 발생 시 1이 됨   
-  - ZF : zero flag, 결과가 zero임을 가리킴, if문 같은 조건문 만족 시 set 됨   
-  - SF : sign flag, 연산 결과 최상위 비트의 값과 같음, Signed 변수의 경우 양수면 0, 음수면 1   
-  - OF : overflow flag, 정수형 결과값이 너무 큰 양수이거나 너무 작은 음수일 경우 피연산자 데이터 타입에 모두 들어가지 않을 경우 1이 됨   
-  - DF : Direction flag, 문자열 처리에 있어서 1일 경우 -> 문자열 처리 instruction 자동 감소(문자열 처리 high address -> low address), 0일 경우 자동 증가    
+  - **CF** : carry flag, 연산을 수행하면서 carry or borrow 발생 시 1이 됨, carry, borrow는 덧셈 연산 시 bit bound를 넘어가거나 뺄셈을 하는 데 빌려오는 경우 말함  
+  - **PF** : Parity flag, 연산 결과 최하위 바이트의 값이 짝수일 경우에 1이 됨, 패리티 체크를 하는 데에 사용   
+  - **AF** : adjust flag, 연산 결과 carry or borrow가 3bit 이상 발생 시 1이 됨   
+  - **ZF** : zero flag, 결과가 zero임을 가리킴, if문 같은 조건문 만족 시 set 됨   
+  - **SF** : sign flag, 연산 결과 최상위 비트의 값과 같음, Signed 변수의 경우 양수면 0, 음수면 1   
+  - **OF** : overflow flag, 정수형 결과값이 너무 큰 양수이거나 너무 작은 음수일 경우 피연산자 데이터 타입에 모두 들어가지 않을 경우 1이 됨   
+  - **DF** : Direction flag, 문자열 처리에 있어서 1일 경우 -> 문자열 처리 instruction 자동 감소(문자열 처리 high address -> low address), 0일 경우 자동 증가    
 
 ## System Flags
 
 ![system flags](image\system_flags.png)
-  - IF : interrupt enable flag, 프로세서에게 mask한 interrupt에 응답할 수 있게 할 시 1
-  - TF : Trap flag, 디버깅을 할 때 single-step을 가능하게 할 시 1
-  - IOPL : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근위해서 I/O privilege level 보다 작거나 같아야 함
-  - NT : Nested task interrupt의 chain 제어, 1->실행 task와 현재 task가 연결되어 있음 나타냄
-  - RF : resume flag, exception debug 하기 위해 프로세서의 응답 제어
-  - VM : virtual-8086 mode flag, virtual-8086 모드 사용하려면 1을 줌
-  - AC : alignment check flag, 이 비트와 CR0 레지스터들의 AM 비트가 set 돼 있을시 메모리 레퍼런스의 alignment checking 가능
-  - VIF : virtual interrupt flag, IF flag의 가상 이미지, VIP flag와 결합시켜 사용
-  - VIP : virtual interrupt pending flag, 인터럽트가 pending 되었음을 가리킴
-  - ID : identification flag, CPUID instruction을 지원하는 CPU인지를 나타냄
+  - **IF** : interrupt enable flag, 프로세서에게 mask한 interrupt에 응답할 수 있게 할 시 1
+  - **TF** : Trap flag, 디버깅을 할 때 single-step을 가능하게 할 시 1
+  - **IOPL** : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근위해서 I/O privilege level 보다 작거나 같아야 함
+  - **NT** : Nested task interrupt의 chain 제어, 1->실행 task와 현재 task가 연결되어 있음 나타냄
+  - **RF** : resume flag, exception debug 하기 위해 프로세서의 응답 제어
+  - **VM** : virtual-8086 mode flag, virtual-8086 모드 사용하려면 1을 줌
+  - **AC** : alignment check flag, 이 비트와 CR0 레지스터들의 AM 비트가 set 돼 있을시 메모리 레퍼런스의 alignment checking 가능
+  - **VIF** : virtual interrupt flag, IF flag의 가상 이미지, VIP flag와 결합시켜 사용
+  - **VIP** : virtual interrupt pending flag, 인터럽트가 pending 되었음을 가리킴
+  - **ID** : identification flag, CPUID instruction을 지원하는 CPU인지를 나타냄
 
 
 ## Instruction Pointer
