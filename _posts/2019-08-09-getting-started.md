@@ -141,7 +141,8 @@ leave, ret
 	  pop %ebp  
 	  ===> mov %ebp, %esp - esp레지스터에 ebp주소 넣기  
 		pop %ebp - ebp를 스택 프레임에서 꺼내기  
-  - ret :  pop %eip   
+  - ret :  
+    pop %eip    
 	  jmp %eip   
 	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄  
 		jmp %eip - 다음 명령의 주소로 점프  
