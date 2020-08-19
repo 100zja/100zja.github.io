@@ -71,24 +71,13 @@ buffer - stack segment에 있음
 
 ## Status Flags
 
-Go to the root directory of the project and start initialization:
-
-```console
-$ bash tools/init.sh
-```
-
-> If you not intend to deploy it on GitHub Pages, append parameter option `--no-gh` at the end of the above command.
-
-What it does is:
-
-1. Remove some files or directories from your repository:
-    - `.travis.yml`
-    - files under `_posts`
-    - folder `docs` 
-
-2. If you use the `--no-gh` option, the directory `.github` will be deleted. Otherwise, setup the GitHub Action workflow by removing extension `.hook` of `.github/workflows/pages-deploy.yml.hook`, and then remove the other files and directories in folder `.github`. 
-
-3. Automatically create a commit to save the changes.
+  - CF : carry flag, 연산을 수행하면서 carry or borrow 발생 시 1이 됨, carry, borrow는 덧셈 연산 시 bit bound를 넘어가거나 뺄셈을 하는 데 빌려오는 경우 말함  
+  - PF : Parity flag, 연산 결과 최하위 바이트의 값이 짝수일 경우에 1이 됨, 패리티 체크를 하는 데에 사용   
+  - AF : adjust flag, 연산 결과 carry or borrow가 3bit 이상 발생 시 1이 됨   
+  - ZF : zero flag, 결과가 zero임을 가리킴, if문 같은 조건문 만족 시 set 됨   
+  - SF : sign flag, 연산 결과 최상위 비트의 값과 같음, Signed 변수의 경우 양수면 0, 음수면 1   
+  - OF : overflow flag, 정수형 결과값이 너무 큰 양수이거나 너무 작은 음수일 경우 피연산자 데이터 타입에 모두 들어가지 않을 경우 1이 됨   
+  - DF : Direction flag, 문자열 처리에 있어서 1일 경우 -> 문자열 처리 instruction 자동 감소(문자열 처리 high address -> low address), 0일 경우 자동 증가    
 
 ## System Flags
 
