@@ -104,7 +104,7 @@ buffer - stack segment에 있음
 
 * 기계어(컴퓨터가 읽을 수 있는 2진수 언어)를 사람이 보기 쉽게 문자를 기호화 하여 나타낸 것   
   - 매우 쉽고 간결함   
-![Assembly](.\image\어셈블리어.png)
+![Assembly](C:\Users\USER\Pictures\image\어셈블리어.png)
 * **push** : push %eax - eax 값을 스택에 저장  
 * **pop** : pop %eax - 스택 가장 상위의 값을 꺼내서 eax에 저장  
 * **mov** : mov %eax, %ebx - 메모리나 레지스터의 값을 옮길 때 사용  
