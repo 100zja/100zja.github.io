@@ -24,7 +24,7 @@ BOF 공격에 취약한 함수 : strcpy, gets, scanf, strcat, sprintf 등
 메모리는 여러 개의 프로세스가 저장되어 병렬적으로 작업을 수행한다.   
 운영 체재 - 하나의 프로세스 실행 시 segment 라는 단위로 묶는다.   
 
-![memory structure](https://3.bp.blogspot.com/-mwxMRKLQTSI/Ws3E5sGhvTI/AAAAAAAAAPA/d9UFgiQbtQctm-Y25HtUCGo9Vmujl2BxgCK4BGAYYCw/s1600/Screenshot%2B2018-04-11%2Bat%2B17.17.54.png.jpg)
+![memory structure](/image/memory_structure.jpg)
 
 Before running or building for the first time, please complete the installation of the Jekyll plugins. Go to the root directory of project and run:
 
