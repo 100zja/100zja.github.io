@@ -24,7 +24,7 @@ pin: true
 메모리는 여러 개의 프로세스가 저장되어 병렬적으로 작업을 수행한다.   
 운영 체재 - 하나의 프로세스 실행 시 segment 라는 단위로 묶는다.   
 
-![memory structure](.\image\메모리_구조.png)
+![memory structure](./image/메모리_구조.png)
 
 * 하나의 세그먼트는 code segment, data segment, stack segment라고 함, 시스템에는 최대 16383개의 segment가 생성될 수 있다.   
 * **code segment** : 시스템들이 알아들을 수 있는 명령어 - instruction이 들어있음, 기계어 코드로써 컴파일러가 만든 코드, 명령을 수행하면서 많은 분기 과정, 점프, 시스템 호출 등 수행  
@@ -37,7 +37,7 @@ pin: true
 * **stack segment** : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역,   
 buffer - stack segment에 있음
 * **stack** : 
-![stack](.\image\stack.png)
+![stack](./image/stack.png)
 *  후입선출 구조 이용    
   - 제일 위의 데이터만 알 수 있다  
   - 그래도 이 때까지의 데이터 개수 알 수 있음    
@@ -83,7 +83,7 @@ buffer - stack segment에 있음
 
 ## **System Flags**
 
-![system flags](.\image\system_flags.png)
+![system flags](./image/system_flags.png)
   - **IF** : interrupt enable flag, 프로세서에게 mask한 interrupt에 응답할 수 있게 할 시 1
   - **TF** : Trap flag, 디버깅을 할 때 single-step을 가능하게 할 시 1
   - **IOPL** : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근위해서 I/O privilege level 보다 작거나 같아야 함
@@ -106,7 +106,7 @@ buffer - stack segment에 있음
 
 * 기계어(컴퓨터가 읽을 수 있는 2진수 언어)를 사람이 보기 쉽게 문자를 기호화 하여 나타낸 것   
   - 매우 쉽고 간결함   
-![Assembly](.\image\어셈블리어.png)
+![Assembly](./image/어셈블리어.png)
 * **push** : push %eax - eax 값을 스택에 저장  
 * **pop** : pop %eax - 스택 가장 상위의 값을 꺼내서 eax에 저장  
 * **mov** : mov %eax, %ebx - 메모리나 레지스터의 값을 옮길 때 사용  
@@ -138,12 +138,12 @@ buffer - stack segment에 있음
 ====> ebp에 스택을 저장하고, esp를 ebp에 저장
 * **에필로그** : 수행을 마치고 처음 호출한 지점으로 돌아가기 위해 스택 복원  
 leave, ret
-  - leave :   
+  - **leave** :   
 	  mov %ebp, %esp   
 	  pop %ebp  
 	  ===> mov %ebp, %esp - esp레지스터에 ebp주소 넣기  
 		pop %ebp - ebp를 스택 프레임에서 꺼내기  
-  - ret :  
+  - **ret** :  
     pop %eip    
 	  jmp %eip   
 	  ===>  pop %eip - eip 레지스터를 스택에서 꺼냄  
