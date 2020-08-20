@@ -83,7 +83,7 @@ buffer - stack segment에 있음
 
 ## **System Flags**
 
-![system flags](./pictrues/image/system_flags.png)
+![system flags](system_flags.png "systemflags")
   - **IF** : interrupt enable flag, 프로세서에게 mask한 interrupt에 응답할 수 있게 할 시 1
   - **TF** : Trap flag, 디버깅을 할 때 single-step을 가능하게 할 시 1
   - **IOPL** : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근위해서 I/O privilege level 보다 작거나 같아야 함
