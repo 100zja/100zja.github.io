@@ -36,7 +36,7 @@ pin: true
   - 프로그램 내애서 전역 변수 선언 -> data segment에 변수 자리잡음 -> 다시 네 개의 data segment 로 나뉨 : 현재 모듈의 data segment, 상위 레벨로부터의 데이터 모듈, 동적 생성 데이터, 다른 프로그램과 공유하는 공유 데이터로 나뉨  
 * **stack segment** : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역,   
 buffer - stack segment에 있음
-* **stack** : 
+* **stack** :   
 ![stack](./images/stack.png)
 *  후입선출 구조 이용    
   - 제일 위의 데이터만 알 수 있다  
