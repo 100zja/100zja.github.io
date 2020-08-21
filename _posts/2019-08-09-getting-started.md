@@ -29,12 +29,16 @@ pin: true
 * 하나의 세그먼트는 code segment, data segment, stack segment라고 함, 시스템에는 최대 16383개의 segment가 생성될 수 있다.   
 
 * **code segment** : 시스템들이 알아들을 수 있는 명령어(instruction)가 들어있음, 기계어 코드로써 컴파일러가 만든 코드, 명령을 수행하면서 많은 분기 과정, 점프, 시스템 호출 등 수행  
+
   - 분기 과정, 점프 : 메모리 상의 특정 위치에 있는 명령을 지정해 주어야 함   
+
   - 세그먼트 : 현재 메모리상의 어느 위치에 저장될지 컴파일 과정에서 알 수 없음 -> 정확한 주소 지정 불가   
-=====> logical address 사용 - 실제 메모리 상의 주소(physical address)와 매핑 됨  
+=====> logical address 사용 - 실제 메모리 상의 주소(physical address)와 매핑 됨 
+
 * segment - segment selector에 의해서 자신의 시작 위치(offset)을 찾을 수 있음, 자신의 시작 위치로부터의 위치에 있는 명령 수행 여부 결정  
 
 * **data segment** : 프로그램 실행 시 사용되는 데이터 들어감 ==> 전역 변수   
+
   - 프로그램 내애서 전역 변수 선언 -> data segment에 변수 자리잡음 -> 다시 네 개의 data segment 로 나뉨 : 현재 모듈의 data segment, 상위 레벨로부터의 데이터 모듈, 동적 생성 데이터, 다른 프로그램과 공유하는 공유 데이터로 나뉨  
 
 * **stack segment** : 현재 수행되고 있는 handler, task, program이 저장하는 데이터 영역,   
@@ -42,7 +46,7 @@ buffer - stack segment에 있음
 
 * **stack** :   
 ![stack](./images/stack.png)
-*  후입선출 구조 이용    
+  - 후입선출 구조 이용    
 
   - 제일 위의 데이터만 알 수 있다  
 
@@ -54,12 +58,14 @@ buffer - stack segment에 있음
      
 ## **Register structure**
 
-    
 * **레지스터** : 프로세서에 위치한 고속 메모리, 극히 소량의 데이터나 처리 중인 중간 결과와도 같은 프로세서 -> 바로 사용할 수 있는 데이터를 담고 있는 영역   
-  - cpu안에 존재, 연산 수행, 컴퓨터 안에서 가장 빠른 연산속도 가짐->자잘한 연산 도맡아서 함   
-  - 용량이 매우 작음, 레지스터에 프로그램 직접 받을 수 없음   
+
+  - cpu안에 존재, 연산 수행, 컴퓨터 안에서 가장 빠른 연산속도 가짐->자잘한 연산 도맡아서 함
+
+  - 용량이 매우 작음, 레지스터에 프로그램 직접 받을 수 없음    
 
  * **범용 레지스터** :　논리, 수리 연산에 사용되는 피연산자, 주소를 계산하는 데 사용되는 피연산자, 메모리 포인터 저장 됨   
+
     - 프로그래머가 임의로 조작할 수 있게 허용되어 있는 레지스터, 32bit로 전환되면서 레지스터 이름의 앞에 E(Extended)가 붙음   
 
     - **EAX** : 피연산자와 연산 결과의 저장소, 누적 연산기, 곱셈과 나눗셈 연산에서 자동 사용   
@@ -216,23 +222,23 @@ leave, ret
 
 ## **Byte Order**
 
-**Big Endian** : 바이트 순서가 낮은 메모리 주소에서 높은 메모리 주소로 정렬  
+* **Big Endian** : 바이트 순서가 낮은 메모리 주소에서 높은 메모리 주소로 정렬  
 ex)74E3FF59(16) -> 74E3FF59  
 
-**Little Endian** : 바이트 순서가 높은 메모리 주소에서 낮은 메모리 주소로 됨  
+* **Little Endian** : 바이트 순서가 높은 메모리 주소에서 낮은 메모리 주소로 됨  
 ex)74E3FF59(16) -> 59FFE374  
 ===> 수를 더하거나 빼는 셈을 할 때 낮은 메모리 주소 영역의 변화는 수의 크기 변화에서 더 적음 
 
 ## **Other**
 
-**return address** : 3개의 인자를 스택에 넣은 뒤 function 호출, call이라는 명령어가 호출됨과 동시에 스택에는 IP가 쌓이는 것 ===>buffer overflow에서 가장 중요함   
+* **return address** : 3개의 인자를 스택에 넣은 뒤 function 호출, call이라는 명령어가 호출됨과 동시에 스택에는 IP가 쌓이는 것 ===>buffer overflow에서 가장 중요함   
 
-**Leave instruction** : 함수 프롤로그 작업을 되돌리는 일,  
+* **Leave instruction** : 함수 프롤로그 작업을 되돌리는 일,  
 함수 프롤로그
-- push %ebp  
+  - push %ebp  
   mov %esp, %ebp  
   프롤로그를 되돌리는 작업  
-- mov %ebp, %esp  
+  - mov %ebp, %esp  
   pop %ebp  
 ===> Leave instruction 하나가 위의 두 가지 일을 한꺼번에 함
 
