@@ -87,8 +87,11 @@ buffer - stack segment에 있음
 * **세그먼트 레지스터** : code segment, data segment, stack segment를 가리키는 주소가 들어있는 레지스터   
 
    - 특정 세그먼트를 가리키는 포인터 역할   
+
     - CS register : code segment   
+
     - DS, ES, FS, GS regester : data segment   
+
     - SS register : stack segment   
 ===> 세그먼트 레지스터가 가리키는 위치를 바탕으로 원하는 segment 안의 특정 데이터, 명령어들을 정확하게 열 수 있음   
 
@@ -123,7 +126,7 @@ buffer - stack segment에 있음
 
   - **TF** : Trap flag, 디버깅을 할 때 single-step을 가능하게 할 시 1
 
-  - **IOPL** : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근위해서 I/O privilege level 보다 작거나 같아야 함
+  - **IOPL** : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근 위해서 I/O privilege level 보다 작거나 같아야 함
 
   - **NT** : Nested task interrupt의 chain 제어, 1->실행 task와 현재 task가 연결되어 있음 나타냄
 
@@ -131,7 +134,7 @@ buffer - stack segment에 있음
 
   - **VM** : virtual-8086 mode flag, virtual-8086 모드 사용하려면 1을 줌
 
-  - **AC** : alignment check flag, 이 비트와 CR0 레지스터들의 AM 비트가 set 돼 있을시 메모리 레퍼런스의 alignment checking 가능
+  - **AC** : alignment check flag, 이 비트와 CR0 레지스터(운영 모드를 제어하는 레지스터)들의 AM 비트가 set 돼 있을시 메모리 레퍼런스의 alignment checking 가능
 
   - **VIF** : virtual interrupt flag, IF flag의 가상 이미지, VIP flag와 결합시켜 사용
 
@@ -181,7 +184,7 @@ buffer - stack segment에 있음
 
 * **int** : int $0x80 - OS에 할당된 인터럽트 영역을 system call  
 
-* **nop** : nop - 아무 동작도 하지 않음  
+* **nop** : nop - 아무 동작도 하지 않음, 기계어 코드가 다른 코드와 섞이지 않게 함  
 
 - 데이터 이동 : mov, lea  
 
@@ -202,7 +205,7 @@ buffer - stack segment에 있음
 * **프롤로그** : 함수 내에서 사용할 스택 프레임 설정, 함수가 시작될 때 stack pointer와 base pointer를 새로 지정하는 과정      
     - push %ebp  
 	- mov %ebp, %esp  
-====> ebp에 스택을 저장하고, esp를 ebp에 저장
+====> ebp에 스택을 저장하고, esp를 ebp에 저장   
 
 * **에필로그** : 수행을 마치고 처음 호출한 지점으로 돌아가기 위해 스택 복원  
 leave, ret
