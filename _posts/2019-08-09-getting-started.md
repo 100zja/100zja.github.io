@@ -49,7 +49,7 @@ buffer - stack segment에 있음
   - 그래도 이 때까지의 데이터 개수 알 수 있음    
 
   - 중간의 데이터는 절대 알 수 없음, 알고 싶다면 제일 위에 있을거라 추정되는 그 데이터의 자료까지 모조리 꺼내봐야 함    
-  
+
   - 제일 처음 들어간 자료는 모든 자료를 꺼내기 전까지 알 수 없고, 제일 마지막에 들어간 자료는 바로 알 수 있음   
      
 ## **Register structure**
@@ -194,8 +194,8 @@ buffer - stack segment에 있음
 ## **Prologue & Epilogue**
 
 * **프롤로그** : 함수 내에서 사용할 스택 프레임 설정, 함수가 시작될 때 stack pointer와 base pointer를 새로 지정하는 과정      
-        push %ebp  
-	      mov %ebp, %esp  
+    - push %ebp  
+	- mov %ebp, %esp  
 ====> ebp에 스택을 저장하고, esp를 ebp에 저장
 
 * **에필로그** : 수행을 마치고 처음 호출한 지점으로 돌아가기 위해 스택 복원  
