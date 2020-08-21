@@ -243,5 +243,5 @@ ex)74E3FF59(16) -> 59FFE374
   프롤로그를 되돌리는 작업  
   - mov %ebp, %esp  
   pop %ebp  
-===> Leave instruction 하나가 위의 두 가지 일을 한꺼번에 함
+===> Leave instruction 하나가 위의 두 가지 일을 한꺼번에 함  
 
