@@ -128,7 +128,7 @@ buffer - stack segment에 있음
 
   - **IOPL** : I/O privilege level field, 현재 수행 중인 프로세스 혹은 task 권한 레벨 가리킴, 현재 수행 중인 프로세스 가리키는 CPL -> I/O address 영역 접근 위해서 I/O privilege level 보다 작거나 같아야 함
 
-  - **NT** : Nested task interrupt의 chain 제어, 1->실행 task와 현재 task가 연결되어 있음 나타냄
+  - **NT** : Nested task interrupt의 chain 제어, 1->실행 task와 현재 task가 연결되어 있음을 나타냄
 
   - **RF** : resume flag, exception debug 하기 위해 프로세서의 응답 제어
 
