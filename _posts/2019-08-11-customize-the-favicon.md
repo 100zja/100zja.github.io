@@ -8,3 +8,5 @@ toc: ture
 ---
 
 ## Level 9  
+
+(1) gdb로 풀기
