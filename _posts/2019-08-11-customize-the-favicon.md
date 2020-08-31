@@ -43,10 +43,19 @@ main+65에서 eax에 ebp-24의 주소를 저장함(buf2)
 
 ![1](/images/십1.PNG)  
 ls -al로 hint 파일의 존재를 확인하고 힌트를 열어본다  
+
 ![2](/images/십2.PNG)  
 * int 배열과 char 배열을 받아옴
 * 문자형 str배열의 크기는 256 바이트  
 * 3092는 level12의 id임  
 * 사용자가 입력한 값을 str에 넣고
 * str 출력
-====> strcpy에서 취약점이 발생해 버퍼 오버 플로우가 일어난다
+====> strcpy에서 취약점이 발생해 버퍼 오버 플로우가 일어난다  
+
+![3](/images/십4.PNG)  
+
+
+test를 입력하니 그대로 출력된 것으로 보아 힌트가 attackme의 소스코드인 것을 알 수 있다.  
+
+![4](/images/십5.PNG)  
+attackme를 권한이 있는 tmp로 복사한 뒤 tmp로 이동해 gdb로 실행시킨다  
