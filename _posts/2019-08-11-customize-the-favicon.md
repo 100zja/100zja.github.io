@@ -59,3 +59,7 @@ test를 입력하니 그대로 출력된 것으로 보아 힌트가 attackme의 
 
 ![4](/images/십5.PNG)  
 attackme를 권한이 있는 tmp로 복사한 뒤 tmp로 이동해 gdb로 실행시킨다  
+gdb를 해석해 보면  
+* setreuid전에 확보된 메모리 : 108 + 8 (16진수) = 110 => 272 byte  
+* main + 9 : SFP, RET =>8 byte  
+===> 256(buffer) + 8(dummy) + 4(SFP) + 4(RET) 
