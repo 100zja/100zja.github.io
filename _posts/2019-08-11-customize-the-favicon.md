@@ -1,5 +1,5 @@
 ---
-title: FTZ
+title: FTZ(Level 9, 11, 12)
 author: 100zja
 date: 2020-08-17
 categories: [study]
