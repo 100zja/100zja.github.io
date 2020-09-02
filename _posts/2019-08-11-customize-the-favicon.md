@@ -106,6 +106,7 @@ cat hint 명령어를 사용해 힌트를 확인한다
 * 입력받은 내용을 printf로 출력한다  
 
 ![3](/images/셋.PNG)  
+
 attackme를 실행하고 문장을 입력하면 입력된 문장이 그대로 출력되는 것을 알 수 있다  
 
 ![4](/images/넷.PNG)  
@@ -117,3 +118,4 @@ gdb를 확인해보면
     - dummy - 8 byte
     - str - 256 byte   
 ===> return address를 덮어쓰기 위해서는 264(str) + 4(sfp) = 268 byte가 필요함  
+
