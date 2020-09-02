@@ -41,7 +41,7 @@ gdb를 실행해서 메모리를 확인한다
 
 ![5](/images/구5.PNG) 
 
-/usr/bin으로 이동해 bof 소스를 실행시켜 버퍼 오버플로우를 발생 시키고 level10의 권한을 얻어 my-pass로 확인한다  
+bof 소스가 있는 /usr/bin 디렉토리로 이동해 bof 소스를 실행시켜 버퍼 오버플로우를 발생 시키고 level10의 권한을 얻어 my-pass로 확인한다  
 
 ### **level10 password : "interesting to hack!"**
 -------------
