@@ -92,3 +92,28 @@ dap을 실행해 보면 쉘코드 주소가 나타난다
 **끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
 
 ## **Level 12**
+
+![1](/images/하나.PNG)  
+ls -al 명령어로 존재하는 파일들을 확인한다  
+힌트가 있는 것을 확인한다
+
+![2](/images/둘.PNG)  
+cat hint 명령어를 사용해 힌트를 확인한다  
+힌트를 분석해보면  
+* 문자형 배열이 256 크기로 선언된다
+* level 13의 id가 있고
+* gets 함수로 str변수에 입력을 받고
+* 입력받은 내용을 printf로 출력한다  
+
+![3](/images/셋.PNG) 
+attackme를 실행하고 문장을 입력하면 입력된 문장이 그대로 출력되는 것을 알 수 있다  
+
+![4](/images/넷.PNG)  
+attackme를 gdb로 보기 위해 권한이 있는 tmp 디렉토리로 복사한뒤 tmp로 이동해 gdb로 확인한다  
+gdb를 확인해보면   
+* main +3 : 264만큼의 메모리 확보  
+    - RET - 4 byte
+    - SFP - 4 byte
+    - dummy - 8 byte
+    - str - 256 byte   
+===> return address를 덮어쓰기 위해서는 264(str) + 4(sfp) = 268 byte가 필요함  
