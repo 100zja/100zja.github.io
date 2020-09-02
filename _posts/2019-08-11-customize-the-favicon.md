@@ -6,6 +6,7 @@ categories: [study]
 tags: [ftz]
 toc: ture
 ---
+# **FTZ**
 
 ## **Level9**  
 
@@ -13,36 +14,43 @@ toc: ture
 
 ![1](/images/구1.PNG) 
 
+ls -al로 파일들을 확인하고  
 힌트가 있음을 확인하고 힌트를 읽는다 
 
 ![2](/images/구2.PNG)  
+코드를 해석해보면  
 * char형 변수 buf, buf2가 10 크기의 배열로 각각 선언되고  
+
 * 40만큼의 문자열을 fgets가 입력받아 buf에 저장한다  
+
 * buf2에 저장된 문자가 go와 일치한다면 "Good skill!" 문구 출력과 3010의 level10 권한을 설정하고
+
 * /bin/bash 쉘을 실행한다  
 
 ![3](/images/구3.PNG)  
 
-gdb를 실행할 수 있는 권한이 있는 tmp로 이동한 뒤에 실행 파일을 생성한다
+gdb를 실행할 수 있는 권한이 있는 tmp로 이동한 뒤에 cat 명령어로 실행 파일을 생성한 뒤 컴파일한다
 
 ![4](/images/구4.PNG)  
 
 gdb를 실행해서 메모리를 확인한다  
-main+3에서 40바이트의 메모리가 할당된다  
-main+43에서 eax에 ebp-40의 주소를 저장함 (buf)    
-main+65에서 eax에 ebp-24의 주소를 저장함(buf2)  
+* main+3에서 40바이트의 메모리가 할당된다  
+* main+43에서 eax에 ebp-40의 주소를 저장함 (buf)    
+* main+65에서 eax에 ebp-24의 주소를 저장함(buf2)  
 ===> buf에서 입력 시에 ebp-40을 넘겨 16바이트를 넘기면 ebp-24 공간을 넘어가 버퍼 오버플로우 발생가능  
 
-![5](/images/구5.PNG)  
+![5](/images/구5.PNG) 
+
 /usr/bin으로 이동해 bof 소스를 실행시켜 버퍼 오버플로우를 발생 시키고 level10의 권한을 얻어 my-pass로 확인한다  
 
-**끝!!!!!!!!!!!!!!!!!!!!!!!!**
+### **level10 password : interesting to hack!**
+-------
 
 
 ## **Level11**  
 
 ![1](/images/십1.PNG)  
-ls -al로 hint 파일의 존재를 확인하고 힌트를 열어본다  
+ls -al로 파일을 확인하고 cat hint 명령어를 통해 힌트를 열어본다  
 
 ![2](/images/십2.PNG)  
 * int 배열과 char 배열을 받아옴
@@ -63,6 +71,7 @@ gdb를 해석해 보면
 * setreuid전에 확보된 메모리 : 108 + 8 (16진수) = 110 => 272 byte  
 * main + 9 : SFP, RET =>8 byte  
 ===> 256(buffer) + 8(dummy) + 4(SFP) + 4(RET)  
+
 ![5](/images/십7.PNG)  
 * export 명령어를 통해서 환경변수를 등록해준다  
     - export [환경변수명]=$(python -c 'print "쉘코드"')
@@ -89,7 +98,9 @@ dap을 실행해 보면 쉘코드 주소가 나타난다
 * 페이로드를 완성하면 ./attackme `python -c 'print "A"*268+"\x1d\xfc\xff\xbf"'`  
 그 뒤에 id를 확인하고 level12가 된 것을 확인하고 my-pass를 통해 비밀번호를 확인한다  
 
-**끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+### **level12 password : it is like this**  
+-----
+
 
 ## **Level 12**
 
