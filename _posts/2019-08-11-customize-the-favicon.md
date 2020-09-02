@@ -42,8 +42,8 @@ gdb를 실행해서 메모리를 확인한다
 
 /usr/bin으로 이동해 bof 소스를 실행시켜 버퍼 오버플로우를 발생 시키고 level10의 권한을 얻어 my-pass로 확인한다  
 
-### **level10 password : interesting to hack!**
--------
+### **level10 password : "interesting to hack!"**
+-------------
 
 
 ## **Level11**  
@@ -97,8 +97,8 @@ dap을 실행해 보면 쉘코드 주소가 나타난다
 * 페이로드를 완성하면 ./attackme `python -c 'print "A"*268+"\x1d\xfc\xff\xbf"'`  
 그 뒤에 id를 확인하고 level12가 된 것을 확인하고 my-pass를 통해 비밀번호를 확인한다  
 
-### **level12 password : it is like this**  
------
+### **level12 password : "it is like this"**  
+----------------
 
 
 ## **Level 12**
@@ -125,7 +125,8 @@ gdb를 확인해보면
 * main +3 : 264만큼의 메모리 확보  
     - RET - 4 byte
     - SFP - 4 byte
-    - dummy - 8 byte
     - str - 256 byte   
 ===> return address를 덮어쓰기 위해서는 264(str) + 4(sfp) = 268 byte가 필요함  
+* main + 49 : ebp - 264 -> str 버퍼부터 ebp까지 거리가 264임  
+    - ret : ebp로부터 4byte 아래에 위치 => 268 byte
 
