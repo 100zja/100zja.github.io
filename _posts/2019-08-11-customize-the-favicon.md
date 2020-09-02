@@ -120,6 +120,7 @@ cat hint 명령어를 사용해 힌트를 확인한다
 attackme를 gdb로 보기 위해 권한이 있는 tmp 디렉토리로 복사한뒤 tmp로 이동해 gdb로 확인한다  
 gdb를 확인해보면   
 * main +3 : 264만큼의 메모리 확보  
+    - str은 256 byte이므로 dummy값이 8 byte라는 것을 알 수 있음
     - RET - 4 byte
     - SFP - 4 byte
     - str - 256 byte   
